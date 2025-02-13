@@ -30,9 +30,6 @@ class Bot:
         name,
         status,
         guilds,
-        anon_channel,
-        anon_log,
-        anon_log_channel,
         owners,
         pfx="$",
         color=0xFF0000,
@@ -43,9 +40,6 @@ class Bot:
         self.color = color
         self.status = status
         self.guilds = guilds
-        self.anon_channel = anon_channel
-        self.anon_log = anon_log
-        self.anon_log_channel = anon_log_channel
         self.owners = owners
 
 
@@ -73,9 +67,6 @@ def get_settings(fn):
         status=Status(value=d["status"], text=d["status_text"]),
         color=d["color"],
         guilds=d["guilds"],
-        anon_channel=d["confession_channel"],
-        anon_log=d["log_confession"],
-        anon_log_channel=d["confession_log_channel"],
         owners=d["owner_ids"],
         pfx=d["prefix"],
     )

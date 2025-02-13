@@ -1,19 +1,18 @@
 {
-    "token": "bot_token_here",
-    "name": "H Bot",
-    "status": "dnd",
-    "status_text":"h",
-    "color": "FF0000",
+    "token": "MTMzOTQ3MzIwNjA3NDkzNzM0NA.GAaw54.F6caTx94EaDs8vHQHNXQ8ngEiAIEHc7EQ1cOoA",
+    "name": "Construction Worker",
+    "status": "idle",
+    "status_text":"Doing Construction Things",
+    "color": "FFFF00",
     "guilds": [
-        1118468021636309064
+        1118468021636309064,
+        1113962336760381552
     ],
-    "confession_channel": 1157874706414833694,
-    "log_confession": true,
-    "confession_log_channel": 1157878868204605500,
     "owner_ids": [
         1117690495481688228,
         1118644765441937418,
-        239184366603862017
+        239184366603862017,
+        339622312766603265
     ],
     "prefix" : "$"
 }

@@ -72,63 +72,6 @@ async def owo(interaction, text):
 
 
 @client.slash_command(
-    name="confess", description="Sends an anonymous confession!", guild_ids=bot.guilds
-)
-async def confess(interaction, text):
-    channel = client.get_channel(bot.anon_channel)
-    if bot.anon_log:
-        log = client.get_channel(bot.anon_log_channel)
-    try:
-        e = discord.Embed(description=text, color=bot.color)
-        e.set_footer(text=f"Anonymous confession by {bot.name}")
-        msg = await channel.send(embed=e)
-        if bot.anon_log:
-            try:
-                le = discord.Embed(
-                    title=f"Anonymous confession sent by {interaction.user.name}",
-                    description=f'{interaction.user.mention} said "{text}"',
-                    color=bot.color,
-                )
-                le.set_footer(
-                    text=f"{interaction.user.name.capitalize()}'s id is {interaction.user.id}"
-                )
-                await log.send(embed=le)
-            except:
-                le = discord.Embed(
-                    title=f"Anonymous confession sent by {interaction.user.name}",
-                    description=f"{interaction.user.mention}'s confession is {msg.jump_url}",
-                    color=bot.color,
-                )
-                le.set_footer(
-                    text=f"{interaction.user.name.capitalize()}'s id is {interaction.user.id}"
-                )
-                await log.send(embed=le)
-        await interaction.response.send_message(
-            f"Sent in {channel.mention}!", ephemeral=True
-        )
-    except:
-        await interaction.response.send_message(
-            "Message was too long :(", ephemeral=True
-        )
-        if bot.anon_log:
-            le = discord.Embed(
-                title=f"Anonymous confession attempted by {interaction.user.name}",
-                description=f"But {interaction.user.mention}'s confession was too long :(",
-                color=bot.color,
-            )
-            le.set_footer(
-                text=f"{interaction.user.name.capitalize()}'s id is {interaction.user.id}"
-            )
-            await log.send(embed=le)
-            try:
-                await log.send(
-                    f"{interaction.user.name.capitalize()}'s confession was: ```\n{text}\n```"
-                )
-            except:
-                pass
-
-
-@client.slash_command(
     name="hex", description="Displays a hex color", guild_ids=bot.guilds
 )
 async def hex_cmd(interaction, color):
