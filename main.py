@@ -92,8 +92,8 @@ async def hex_cmd(interaction, color):
         color=int("0x" + color, 16),
     )
     e.set_footer(
-        text=f'Closest CSS3 Named color is {wordcolor}: #{color}',
-        icon_url=f'https://www.colorhexa.com/{color}.png',
+        text=f"Closest CSS3 Named color is {wordcolor}: #{color}",
+        icon_url=f"https://www.colorhexa.com/{color}.png",
     )
     e.set_thumbnail(url=f"https://www.colorhexa.com/{color}.png")
     await interaction.response.send_message(embed=e)

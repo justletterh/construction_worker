@@ -80,4 +80,5 @@ def hex2rgb(hex):
     b = int(hex[4:6], 16)
     return (r, g, b)
 
+
 hex2word = lambda x: webcolors.hex_to_name(x)
