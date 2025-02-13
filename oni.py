@@ -8,33 +8,33 @@ class Onih(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
     @Feature.Command(parent="oni", name="roleall", aliases=["role_all", "role-all"])
     async def oni_roleall(self, ctx, *, roles=None):
         if roles == None:
-            await ctx.send("Please send roles seperated by commas")
+            await ctx.send("Please send roles seperated by spaces.")
             return
-        roles = roles.replace(" ", "").split(",")
+        roles = roles.replace(",", "").replace("<@&","").replace(">","").split(" ")
         members = ctx.guild.members
         msg = await ctx.send("Please Wait...")
+        rs=[]
         for r in roles:
-            for m in members:
-                if not m.bot:
-                    rr = ctx.guild.get_role(int(r))
-                    if not rr in m.roles:
-                        await m.add_roles(rr)
+            rs.append(ctx.guild.get_role(int(r)))
+        for m in members:
+            if not m.bot:
+                await m.add_roles(*rs)
         await msg.edit(content="Done!")
 
     @Feature.Command(parent="oni", name="unroleall", aliases=["unrole_all", "unrole-all","un_role_all","un-role-all"])
     async def oni_unroleall(self, ctx, *, roles=None):
         if roles == None:
-            await ctx.send("Please send roles seperated by commas")
+            await ctx.send("Please send roles seperated by spaces.")
             return
-        roles = roles.replace(" ", "").split(",")
+        roles = roles.replace(",", "").replace("<@&","").replace(">","").split(" ")
         members = ctx.guild.members
         msg = await ctx.send("Please Wait...")
+        rs=[]
         for r in roles:
-            for m in members:
-                if not m.bot:
-                    rr = ctx.guild.get_role(int(r))
-                    if rr in m.roles:
-                        await m.remove_roles(rr)
+            rs.append(ctx.guild.get_role(int(r)))
+        for m in members:
+            if not m.bot:
+                await m.remove_roles(*rs)
         await msg.edit(content="Done!")
 
     @Feature.Command(parent="oni", name="dm", aliases=["pm"])
