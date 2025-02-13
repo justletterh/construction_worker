@@ -5,7 +5,7 @@ import re
 
 
 class Onih(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
-    @Feature.command(parent="oni", name="roleall", aliases=["role_all","role-all"])
+    @Feature.Command(parent="oni", name="roleall", aliases=["role_all","role-all"])
     async def oni_roleall(self, ctx, user, *, roles=None):
         if roles == None:
             await ctx.send("Please send roles seperated by commas")
