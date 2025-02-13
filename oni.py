@@ -6,11 +6,20 @@ import re
 
 class Onih(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
     @Feature.Command(parent="oni", name="roleall", aliases=["role_all","role-all"])
-    async def oni_roleall(self, ctx, user, *, roles=None):
+    async def oni_roleall(self, ctx, *, roles=None):
         if roles == None:
             await ctx.send("Please send roles seperated by commas")
             return
-        ctx.send("h")
+        roles=roles.replace(" ","").split(",")
+        members=ctx.guild.members
+        msg=await ctx.send("Please Wait...")
+        for r in roles:
+            for m in members:
+                if not m.bot:
+                    rr=ctx.guild.get_role(int(r))
+                    if not rr in m.roles:
+                        await m.add_roles(rr)
+        await msg.edit(content="Done!")
 
     @Feature.Command(parent="oni", name="dm", aliases=["pm"])
     async def oni_dm(self, ctx, user, *, msg=None):
