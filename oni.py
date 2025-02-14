@@ -15,10 +15,17 @@ class Onih(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
         msg = await ctx.send("Please Wait...")
         rs=[]
         for r in roles:
-            rs.append(ctx.guild.get_role(int(r)))
+            if not r=="":
+                rs.append(ctx.guild.get_role(int(r)))
+        print("Adding roles...")
         for m in members:
             if not m.bot:
                 await m.add_roles(*rs)
+                #logging
+                print(f"Added roles to {m.name}!")
+            else:
+                print(f"{m.name} skipped due to being a bot.")
+        print("Role adding complete!")
         await msg.edit(content="Done!")
 
     @Feature.Command(parent="oni", name="unroleall", aliases=["unrole_all", "unrole-all","un_role_all","un-role-all"])
@@ -31,10 +38,17 @@ class Onih(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
         msg = await ctx.send("Please Wait...")
         rs=[]
         for r in roles:
-            rs.append(ctx.guild.get_role(int(r)))
+            if not r=="":
+                rs.append(ctx.guild.get_role(int(r)))
+        print("Removing roles...")
         for m in members:
             if not m.bot:
                 await m.remove_roles(*rs)
+                #logging
+                print(f"Removed roles from {m.name}!")
+            else:
+                print(f"{m.name} skipped due to being a bot.")
+        print("Role removal complete!")
         await msg.edit(content="Done!")
 
     @Feature.Command(parent="oni", name="dm", aliases=["pm"])
