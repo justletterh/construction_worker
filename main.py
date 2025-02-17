@@ -5,6 +5,7 @@ from nextcord.ext import commands
 from nextcord import Interaction
 from oni import Onih
 import re
+import psutil
 
 # never ever post the token
 
